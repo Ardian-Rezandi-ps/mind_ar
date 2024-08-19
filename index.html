@@ -6,28 +6,76 @@
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.0.0/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
     <script>
+        var skor;
+  var jumLukisan;
+  var initLukisan=false;
+  var foundLadyKebaya=false;
+  var foundRadensalehdiponegoro=false;
+  var foundAffandiKebunCengkeh=false;
+  var stringLukisan="";
+      function updateSkorplus(){
+        if(initLukisan){
+  var isAlreadyfounded=false;
+    
+    switch(stringLukisan){
+  case "LadyKebaya":
+      if(foundLadyKebaya){
+        isAlreadyfounded=true;
+      }
+      foundLadyKebaya=true;
+    break;
+  case "Radensalehdiponegoro":
+      if(foundRadensalehdiponegoro){
+        isAlreadyfounded=true;
+      }
+      foundRadensalehdiponegoro=true;
+    break;
+  case "AffandiKebunCengkeh":
+      if(foundAffandiKebunCengkeh){
+        isAlreadyfounded=true;
+      }
+      foundAffandiKebunCengkeh=true;
+    break;
+      }
+
+      if(!isAlreadyfounded){
+        skor +=10;
+    jumLukisan +=1;
+    document.getElementById("skortex").innerHTML="Skor: "+skor;
+    document.getElementById("jumlahlukisan").innerHTML="Jumlah Lukisan: "+jumLukisan+"/10";
+        }
+    }
+      
+  }
+  function initScene(){
+   console.log("inited");  
+   initLukisan=true;
+   foundLadyKebaya=false;
+   foundRadensalehdiponegoro=false;
+   foundAffandiKebunCengkeh=false;
+  }
+  
       document.addEventListener("DOMContentLoaded", function() {
 	const sceneEl = document.querySelector('a-scene');
   const deskripsiEl = document.querySelector('deskripsi');
 	let arSystem;
-  var skor;
-  var jumLukisan;
+
   skor=0;
   jumLukisan=0;
-  function updateSkorplus(){
-    skor +=10;
-    jumLukisan +=1;
-    document.getElementById("skortex").innerHTML="Skor: "+skor;
-    document.getElementById("jumlahlukisan").innerHTML="Jumlah Lukisan: "+jumLukisan+"/10";
-  }
+
+
+  
+
   document.getElementById("skortex").innerHTML="Skor: 0";
   document.getElementById("jumlahlukisan").innerHTML="Jumlah Lukisan: 0/10";
 	sceneEl.addEventListener('loaded', function () {
 	  arSystem = sceneEl.systems["mindar-image-system"];
 	});
+
 	const TargetLadyKebaya = document.querySelector('#TargetLadyKebaya');
   const TargetRadensalehdiponegoro = document.querySelector('#TargetRaden-saleh-diponegoro');
   const TargetAffandiKebunCengkeh = document.querySelector('#TargetAffandiKebunCengkeh');
+  const ayam = document.querySelector('#ayam');
 	const examplePlane = document.querySelector('#example-plane');
   
   // detect target found
@@ -36,7 +84,9 @@
     document.getElementById("deskripsiUi").style.display ="block";
     document.getElementById("title").innerHTML= "Lady with Kebaya karya: Basuki Abdullah";
     document.getElementById("deskripsitex").innerHTML= "Basoeki Abdullah lahir di Surakarta, Jawa Tengah, 25 Januari 1915 – meninggal 5 November 1993 pada umur 78 tahun, dia merupakan salah satu pelukis maestro yang dimiliki Indonesia. Ia dikenal sebagai pelukis aliran realis dan naturalis. Ia pernah diangkat menjadi pelukis resmi Istana Merdeka Jakarta dan karya-karyanya menghiasi istana negara dan kepresidenan Indonesia, karyanya juga koleksi oleh para kolektor dari berbagai penjuru dunia.";
+    stringLukisan="LadyKebaya";
     updateSkorplus();
+    
   });
 
   TargetRadensalehdiponegoro.addEventListener("targetFound", event => {
@@ -44,16 +94,23 @@
     document.getElementById("deskripsiUi").style.display ="block";
     document.getElementById("title").innerHTML= "PENANGKAPAN DIPONEGORO karya: Raden Saleh";
     document.getElementById("deskripsitex").innerHTML= "Raden Shaleh (Raden Saleh Sjarif Boestaman) adalah seorang pelukis terkenal dari indonesia. yang lahir pada tahun 1881 dari keluarga Tumenggung Kyai Ngabehi Kertoboso Bustaman (1681-1759), raden shaleh merupakan melukis dengan gaya barat yang dia mengekspresikan individualitas  dan kreatifitas pada karya-karyanya (berlawanan dengan gaya tradisional yang menekankan pada reproduksi bentuk dan gaya yang sudah ada), sehingga menjadi insfirasi bagi para seniman-seniman Indonesia untuk mengekspresikan ide-ide secara lebih bebas. bermula dari krusman radeh saleh mempelajari ketrampilannya sebagai seniman lukis potret atau portraitist,berawal dari itu raden saleh diterima diberbagai istana di Eropa untuk bertugas terutama untuk membuat lukisan potret.";
-	  updateSkorplus();
+    stringLukisan="Radensalehdiponegoro";
+    updateSkorplus();
   });  
 
     TargetAffandiKebunCengkeh.addEventListener("targetFound", event => {
 	  console.log("target found");
     document.getElementById("deskripsiUi").style.display ="block";
     document.getElementById("title").innerHTML= "Kebun Cengkeh karya: Affandi";
-    document.getElementById("deskripsitex").innerHTML= "Affandi Koesoema (Cirebon, Jawa Barat, 1907 - 23 Mei 1990) adalah seorang pelukis yang dikenal sebagai Maestro Seni Lukis Indonesia, mungkin pelukis Indonesia yang paling terkenal di dunia internasional, berkat gaya ekspresionisnya dan romantisme yang khas. Pada tahun 1950-an ia banyak mengadakan pameran tunggal di India, Inggris, Eropa, dan Amerika Serikat. Pelukis yang produktif, Affandi telah melukis lebih dari dua ribu lukisan.";  });  
+    document.getElementById("deskripsitex").innerHTML= "Affandi Koesoema (Cirebon, Jawa Barat, 1907 - 23 Mei 1990) adalah seorang pelukis yang dikenal sebagai Maestro Seni Lukis Indonesia, mungkin pelukis Indonesia yang paling terkenal di dunia internasional, berkat gaya ekspresionisnya dan romantisme yang khas. Pada tahun 1950-an ia banyak mengadakan pameran tunggal di India, Inggris, Eropa, dan Amerika Serikat. Pelukis yang produktif, Affandi telah melukis lebih dari dua ribu lukisan.";   
+    stringLukisan="AffandiKebunCengkeh";
     updateSkorplus();
-  });
+    });
+  }); 
+
+   
+    
+  setTimeout(initScene, 3000); // Menjalankan updateSkorplus setelah 3 detik
 
  
   </script>
@@ -68,33 +125,23 @@
       <p id="deskripsitex" style="align-items: justify;"></p>
    </div>
     <div>
-        <a-scene mindar-image="imageTargetSrc: ./Target/ladykebaya.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-scene mindar-image="imageTargetSrc: ./Target/multitarget.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
             <a-assets >
             </a-assets>
             <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
             <a-entity mindar-image-target="targetIndex: 0" id="TargetLadyKebaya">
            </a-entity>
+
+           <a-entity mindar-image-target="targetIndex: 1" id="TargetRaden-saleh-diponegoro">
+          </a-entity>
+
+           <a-entity mindar-image-target="targetIndex: 2" id="TargetAffandiKebunCengkeh">
+          </a-entity>
+          <a-entity mindar-image-target="targetIndex: 3" id="ayam">
+          </a-entity>
           </a-scene>
 
-          <a-scene mindar-image="imageTargetSrc: ./Target/kebuncengkeh.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-            <a-assets >
-            </a-assets>
-            <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-            <a-entity mindar-image-target="targetIndex: 0" id="TargetAffandiKebunCengkeh">
-           </a-entity>
-          </a-scene>
-
-          <a-scene mindar-image="imageTargetSrc: ./Target/cardraden-saleh-diponegoro.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-            <a-assets>
-            </a-assets>
-      
-            <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-            
-            
-            <a-entity mindar-image-target="targetIndex: 0" id="TargetRaden-saleh-diponegoro">
-              </a-entity>
           
-          </a-scene>
     </div>
    
   </body>
