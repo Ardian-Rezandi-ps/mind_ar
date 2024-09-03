@@ -19,10 +19,20 @@ pilihan {
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.0.0/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
    
-   <script>
-
- 
-  </script>
+    <script>
+      window.addEventListener('click', function () {
+      var v = document.querySelector('#v0');
+      v.play();
+      });
+      window.addEventListener('click', function () {
+      var v = document.querySelector('#v1');
+      v.play();
+      });
+      window.addEventListener('click', function () {
+      var v = document.querySelector('#v2');
+      v.play();
+      });
+    </script>
   
   </head>
   <body>
@@ -35,18 +45,25 @@ pilihan {
   </div>
   
     <div style="z-index: -22;" id ="arscenediv">
-        <a-scene mindar-image="imageTargetSrc: ./Target/multitarget.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+        <a-scene mindar-image="imageTargetSrc: ./Target/demo3.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
             <a-assets >
+              <video id="v0" autoplay="true" loop="true" src="./assets/kartini.mp4" muted="true"></video> 
+              <video id="v1" autoplay="true" loop="true" src="./assets/bwman.mp4" muted="true"></video> 
+              <video id="v2" autoplay="true" loop="true" src="./assets/soekarno.mp4" muted="true"></video> 
+             
             </a-assets>
             <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
             <a-entity mindar-image-target="targetIndex: 0" id="t0">
+              <a-video src="#v0" width="9" height="16" position="0 0.1 0" rotation="0 -30 0" scale="0.1 0.1 0.1" play="true"></a-video>
            </a-entity>
 
            <a-entity mindar-image-target="targetIndex: 1" id="t1">
+            <a-video src="#v1" width="9" height="16" position="0 0.1 0"  rotation="0 -30 0" scale="0.1 0.1 0.1" play="true"></a-video>
           </a-entity>
 
            <a-entity mindar-image-target="targetIndex: 2" id="t2">
+            <a-video src="#v2" width="9" height="16" position="0 0 0" rotation="0 -30 0" scale="0.1 0.1 0.1" play="true"></a-video>
           </a-entity>
 
           <a-entity mindar-image-target="targetIndex: 3" id="t3">
@@ -158,7 +175,7 @@ pilihan {
 
           
     </div>
-    <div id="deskripsiUi" style="display: block; position: absolute; bottom: 0;
+    <div id="deskripsiUi" style="display: none; position: absolute; bottom: 0;
     height: 25vh; width: 95%; background: rgba(255, 255, 255, 0.8);z-index: 22;
      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); padding: 20px; 
      border-radius: 10px; font-size: 0.6em;left: 50%; transform: translateX(-50%); "> 
@@ -166,7 +183,7 @@ pilihan {
        <h1 id="title" align-items="center">Judul</h1> 
        <button id="showquiz">Tampilkan Quiz</button>
        <p id="deskripsitex" style="align-items: justify;">Deskripsi</p>
-       <img id="pic" width="100px" src="Marker\BASOEKI ABDULLAH, Flower, 55cm X 70cm, Oil on canvas masterpiece.jpg" style="align-items: justify;"></img>
+       <img id="picMarker" width="100px" src="Marker\sajianrasa1.png" style="align-items: justify;"></img>
        <p style="align-items: justify;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
        <p style="align-items: justify;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
        <p style="align-items: justify;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
@@ -260,28 +277,6 @@ const isfoundedTarget=[];
       if(initLukisan){
 var isAlreadyfounded=false;
 
-  /*
-  switch(stringLukisan){
-case "LadyKebaya":
-    if(foundLadyKebaya){
-      isAlreadyfounded=true;
-    }
-    foundLadyKebaya=true;
-  break;
-case "Radensalehdiponegoro":
-    if(foundRadensalehdiponegoro){
-      isAlreadyfounded=true;
-    }
-    foundRadensalehdiponegoro=true;
-  break;
-case "AffandiKebunCengkeh":
-    if(foundAffandiKebunCengkeh){
-      isAlreadyfounded=true;
-    }
-    foundAffandiKebunCengkeh=true;
-  break;
-    }
-*/
 if(!isfoundedTarget[indekSave] ){
     if(!isAlreadyfounded){
       isfoundedTarget[indekSave]=true;
@@ -292,9 +287,9 @@ if(!isfoundedTarget[indekSave] ){
   document.getElementById("jumlahlukisan").innerHTML="Jumlah Lukisan: "+jumLukisan+"/"+maxImage;
       }
   }
+}  
 }
-    
-}
+
 function initScene(){
  console.log("inited");  
  initLukisan=true;
@@ -331,19 +326,44 @@ const TargetAffandiKebunCengkeh = document.querySelector('#TargetAffandiKebunCen
 const ayam = document.querySelector('#ayam');
 */
 const examplePlane = document.querySelector('#example-plane');
-
+var titletemp="Judul";
+var deskripsitemp="Deskripsi";
 for (let i = 0; i < maxImage; i++) {
  TargetsAll[i].addEventListener("targetFound", event => {
   console.log("target found");
+  titleGet(i);
   document.getElementById("deskripsiUi").style.display ="block";
-  document.getElementById("title").innerHTML= "judul indeks ke "+i;
-  document.getElementById("deskripsitex").innerHTML= "deskripsi indeks ke "+i;
+  document.getElementById("title").innerHTML= titletemp;
+  document.getElementById("deskripsitex").innerHTML= deskripsitemp;
+  var iplus= i+1;
+  document.getElementById("picMarker").src= "Marker/sajianrasa"+ iplus +".png";
+ 
+  var v = document.querySelector('#v'+i);
+  v.play();
  //  stringLukisan="";
   indekSave=i;
   
   updateSkorplus();
   
 });
+
+function titleGet(indeks){
+  switch(indeks){
+    case 0:
+    titletemp="Kartini";
+    deskripsitemp="Deskripsi Kartini";
+      break;
+    case 1:
+    titletemp="Basoeki Abdullah";
+    deskripsitemp="Deskripsi Basoeki Abdullah";
+      break;
+    case 2:
+    titletemp="Ir Soekarno";
+    deskripsitemp="Deskripsi Ir Soekarno";
+      break;
+
+  }
+}
 }
 
 }); 
