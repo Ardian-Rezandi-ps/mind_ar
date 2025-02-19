@@ -1,226 +1,47 @@
 <html>
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raja Ratu</title>
     <style>
-      div.ex3 {
-  background-color: lightblue;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  
-}
-pilihan {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 kolom */
-    gap: 10px; /* Jarak antar tombol */
-  }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .play-button {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .play-button:hover {
+            background-color: #0056b3;
+        }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v7.0.0/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
    
-    <script>
-      window.addEventListener('click', function () {
-      var v = document.querySelector('#v0');
-      v.play();
-      });
-      window.addEventListener('click', function () {
-      var v = document.querySelector('#v1');
-      v.play();
-      });
-      window.addEventListener('click', function () {
-      var v = document.querySelector('#v2');
-      v.play();
-      });
-    </script>
-  
   </head>
   <body>
-    <div id="SkorUi" style="display: block; position: absolute; top: 0; 
-    height: 10vh; background: rgba(255, 255, 255, 0.8); 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); padding: 20px;
-     border-radius: 10px; font-size: 0.6em;"> 
-      <h1 id="jumlahlukisan">0/10</h1> 
-      <h1 id="skortex">0</h1> 
-  </div>
   
-    <div style="z-index: -22;" id ="arscenediv">
-        <a-scene mindar-image="imageTargetSrc: ./Target/demo3.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-            <a-assets >
-              <video id="v0" autoplay="true" loop="true" src="./assets/kartini.mp4" muted="true"></video> 
-              <video id="v1" autoplay="true" loop="true" src="./assets/bwman.mp4" muted="true"></video> 
-              <video id="v2" autoplay="true" loop="true" src="./assets/soekarno.mp4" muted="true"></video> 
-             
-            </a-assets>
-            <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
-
-            <a-entity mindar-image-target="targetIndex: 0" id="t0">
-              <a-video src="#v0" width="9" height="16" position="0 0.1 0" rotation="0 -30 0" scale="0.1 0.1 0.1" play="true"></a-video>
-           </a-entity>
-
-           <a-entity mindar-image-target="targetIndex: 1" id="t1">
-            <a-video src="#v1" width="9" height="16" position="0 0.1 0"  rotation="0 -30 0" scale="0.1 0.1 0.1" play="true"></a-video>
-          </a-entity>
-
-           <a-entity mindar-image-target="targetIndex: 2" id="t2">
-            <a-video src="#v2" width="9" height="16" position="0 0 0" rotation="0 -30 0" scale="0.1 0.1 0.1" play="true"></a-video>
-          </a-entity>
-
-          <a-entity mindar-image-target="targetIndex: 3" id="t3">
-          </a-entity>
-
-          <a-entity mindar-image-target="targetIndex: 4" id="t4">
-          </a-entity>
-          <a-entity mindar-image-target="targetIndex: 5" id="t5">
-          </a-entity>
-
-          <a-entity mindar-image-target="targetIndex: 6" id="t6">
-         </a-entity>
-
-          <a-entity mindar-image-target="targetIndex: 7" id="t7">
-         </a-entity>
-
-         <a-entity mindar-image-target="targetIndex: 8" id="t8">
-         </a-entity>
-
-         <a-entity mindar-image-target="targetIndex: 9" id="t9">
-         </a-entity>
-         <a-entity mindar-image-target="targetIndex: 10" id="t10">
-        </a-entity>
-
-        <a-entity mindar-image-target="targetIndex: 11" id="t11">
-       </a-entity>
-
-        <a-entity mindar-image-target="targetIndex: 12" id="t12">
-       </a-entity>
-
-       <a-entity mindar-image-target="targetIndex: 13" id="t13">
-       </a-entity>
-
-       <a-entity mindar-image-target="targetIndex: 14" id="t14">
-       </a-entity>
-       <a-entity mindar-image-target="targetIndex: 15" id="t15">
-       </a-entity>
-
-       <a-entity mindar-image-target="targetIndex: 16" id="t16">
-      </a-entity>
-
-       <a-entity mindar-image-target="targetIndex: 17" id="t17">
-      </a-entity>
-
-      <a-entity mindar-image-target="targetIndex: 18" id="t18">
-      </a-entity>
-
-      <a-entity mindar-image-target="targetIndex: 19" id="t19">
-      </a-entity>
-
-      <a-entity mindar-image-target="targetIndex: 20" id="t20">
-      </a-entity>
-
-      <a-entity mindar-image-target="targetIndex: 21" id="t21">
-     </a-entity>
-
-      <a-entity mindar-image-target="targetIndex: 22" id="t22">
-     </a-entity>
-
-     <a-entity mindar-image-target="targetIndex: 23" id="t23">
-     </a-entity>
-
-     <a-entity mindar-image-target="targetIndex: 24" id="t24">
-     </a-entity>
-     <a-entity mindar-image-target="targetIndex: 25" id="t25">
-     </a-entity>
-
-     <a-entity mindar-image-target="targetIndex: 26" id="t26">
-    </a-entity>
-
-     <a-entity mindar-image-target="targetIndex: 27" id="t27">
-    </a-entity>
-
-    <a-entity mindar-image-target="targetIndex: 28" id="t28">
-    </a-entity>
-
-    <a-entity mindar-image-target="targetIndex: 29" id="t29">
-    </a-entity>
-
-    <a-entity mindar-image-target="targetIndex: 30" id="t30">
-    </a-entity>
-
-    <a-entity mindar-image-target="targetIndex: 31" id="t31">
-   </a-entity>
-
-    <a-entity mindar-image-target="targetIndex: 32" id="t32">
-   </a-entity>
-
-   <a-entity mindar-image-target="targetIndex: 33" id="t33">
-   </a-entity>
-
-   <a-entity mindar-image-target="targetIndex: 34" id="t34">
-   </a-entity>
-   <a-entity mindar-image-target="targetIndex: 35" id="t35">
-   </a-entity>
-
-   <a-entity mindar-image-target="targetIndex: 36" id="t36">
-  </a-entity>
-
-   <a-entity mindar-image-target="targetIndex: 37" id="t37">
-  </a-entity>
-
-  <a-entity mindar-image-target="targetIndex: 38" id="t38">
-  </a-entity>
-
-  <a-entity mindar-image-target="targetIndex: 39" id="t39">
-  </a-entity>
-          </a-scene>
-
-          
-    </div>
-    <div id="deskripsiUi" style="display: none; position: absolute; bottom: 0;
-    height: 25vh; width: 95%; background: rgba(255, 255, 255, 0.8);z-index: 22;
-     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); padding: 20px; 
-     border-radius: 10px; font-size: 0.6em;left: 50%; transform: translateX(-50%); "> 
-     <div class="ex3">
-       <h1 id="title" align-items="center">Judul</h1> 
-       <button id="showquiz">Tampilkan Quiz</button>
-       <p id="deskripsitex" style="align-items: justify;">Deskripsi</p>
-       <img id="picMarker" width="100px" src="Marker\sajianrasa1.png" style="align-items: justify;"></img>
-       <p style="align-items: justify;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-       <p style="align-items: justify;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-       <p style="align-items: justify;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-       <p style="align-items: justify;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-       <p style="align-items: justify;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-       <p style="align-items: justify;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-       <p style="align-items: justify;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-       <p style="align-items: justify;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-       <p style="align-items: justify;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-       <p style="align-items: justify;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-       <p style="align-items: justify;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-       <p style="align-items: justify;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-     
-     </div>
- 
-
-  </div>
-  <div id="quizUi" style="display: none; position: absolute; bottom: 0;
-  height: 25vh; width: 95%; background: rgba(255, 255, 255, 0.8);z-index: 22;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); padding: 20px; 
-   border-radius: 10px; font-size: 0.6em;left: 50%; transform: translateX(-50%); "> 
-  <h3>Pilih jawaban yang benar:</h3>
-  <h1 id="question">Apa ibukota Indonesia?</h1>
-  <div id="pilihan" class="pilihan">
-
-      <button id="pilihA" >A. Jakarta</button>
-      <button id="pilihB" >B. Bandung</button>
-     
-      <button id="pilihC" >C. Surabaya</button>
-      <button id="pilihD">D. Medan</button>
-  </div>
-  <h2 id="result"></h2>
-  <button id="nextQuestionButton" >Next question</button>
-  <br>
-  <br>
-  <button id="tutupquiz">Tutup Quiz</button>
-</div>
+  
+    
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
 
@@ -253,223 +74,11 @@ measurementId: "G-TCPGGEBR1C"
             console.log("jumlah=" + strStats);                                                                                           
       }
     })
-    function upskorFbase(){
-      console.log("upskor");
-      if(initLukisan){
-     set(ref(db,  "count/Lukisan/player1/"), {skor: skor,id: 1011});
-    }
-    }
-
    
-      var skor;
-var jumLukisan;
-var initLukisan=false;
-var foundLadyKebaya=false;
-var foundRadensalehdiponegoro=false;
-var foundAffandiKebunCengkeh=false;
-
-var indekSave=0;    
-var stringLukisan="";
-const maxImage=39;
-const isfoundedTarget=[];
-
-    function updateSkorplus(){
-      if(initLukisan){
-var isAlreadyfounded=false;
-
-if(!isfoundedTarget[indekSave] ){
-    if(!isAlreadyfounded){
-      isfoundedTarget[indekSave]=true;
-      skor +=10;
-  jumLukisan +=1;
-
-  document.getElementById("skortex").innerHTML="Skor: "+skor;
-  document.getElementById("jumlahlukisan").innerHTML="Jumlah Lukisan: "+jumLukisan+"/"+maxImage;
-      }
-  }
-}  
-}
-
-function initScene(){
- console.log("inited");  
- initLukisan=true;
- foundLadyKebaya=false;
- foundRadensalehdiponegoro=false;
- foundAffandiKebunCengkeh=false;
-}
-
-    document.addEventListener("DOMContentLoaded", function() {
-const sceneEl = document.querySelector('a-scene');
-const deskripsiEl = document.querySelector('deskripsi');
-let arSystem;
-
-skor=0;
-jumLukisan=0;
-
-
-
-
-document.getElementById("skortex").innerHTML="Skor: 0";
-document.getElementById("jumlahlukisan").innerHTML="Jumlah Lukisan: 0/"+maxImage;
-sceneEl.addEventListener('loaded', function () {
-  arSystem = sceneEl.systems["mindar-image-system"];
-});
-const TargetsAll = [];
-for (let j= 0; j < maxImage; j++) {
-  TargetsAll[j]= document.querySelector('#t'+j);
-  isfoundedTarget[j]=false;
-}
-
-/*const TargetLadyKebaya = document.querySelector('#TargetLadyKebaya');
-const TargetRadensalehdiponegoro = document.querySelector('#TargetRaden-saleh-diponegoro');
-const TargetAffandiKebunCengkeh = document.querySelector('#TargetAffandiKebunCengkeh');
-const ayam = document.querySelector('#ayam');
-*/
-const examplePlane = document.querySelector('#example-plane');
-var titletemp="Judul";
-var deskripsitemp="Deskripsi";
-for (let i = 0; i < maxImage; i++) {
- TargetsAll[i].addEventListener("targetFound", event => {
-  console.log("target found");
-  titleGet(i);
-  document.getElementById("deskripsiUi").style.display ="block";
-  document.getElementById("title").innerHTML= titletemp;
-  document.getElementById("deskripsitex").innerHTML= deskripsitemp;
-  var iplus= i+1;
-  document.getElementById("picMarker").src= "Marker/sajianrasa"+ iplus +".png";
  
-  var v = document.querySelector('#v'+i);
-  v.play();
- //  stringLukisan="";
-  indekSave=i;
-  
-  updateSkorplus();
-  
-});
 
-function titleGet(indeks){
-  switch(indeks){
-    case 0:
-    titletemp="Kartini";
-    deskripsitemp="Deskripsi Kartini";
-      break;
-    case 1:
-    titletemp="Basoeki Abdullah";
-    deskripsitemp="Deskripsi Basoeki Abdullah";
-      break;
-    case 2:
-    titletemp="Ir Soekarno";
-    deskripsitemp="Deskripsi Ir Soekarno";
-      break;
-
-  }
-}
-}
-
-}); 
-
- 
-  
-setTimeout(initScene, 3000);
-  var answer='A'; // Menjalankan updateSkorplus setelah 3 detik
-  function checkAnswerA() {
-   answer='A';
-   checkAnswer2();
-  }
-  function checkAnswerB() {
-   answer='B';
-   checkAnswer2();
-  }
-  function checkAnswerC() {
-   answer='C';
-   checkAnswer2();
-  }
-  function checkAnswerD() {
-   answer='D';
-   checkAnswer2();
-  }
-  function checkAnswer2(){
-    const resultEl = document.getElementById('result');
-      document.getElementById("pilihan").style.display = "none";
-      if (answer === questions[currentQuestionIndex].correctAnswer) {
-          resultEl.innerHTML = "Jawaban Anda benar!";
-          skor += 10;
-          upskorFbase();
-          document.getElementById("skortex").innerHTML = "Skor: " + skor;
-      } else {
-          resultEl.innerHTML = "Jawaban Anda salah. Coba lagi!";
-      }
-      currentQuestionIndex++;
-      if(currentQuestionIndex>2){
-        if (currentQuestionIndex < questions.length) {
-          setTimeout(loadQuestion, 2000); // Tunggu 2 detik sebelum memuat pertanyaan berikutnya
-      } else {
-          setTimeout(closeQuiz, 2000); // Tutup kuis setelah semua pertanyaan dijawab
-      }
-      }else{
-        document.getElementById("nextQuestionButton").style.display = "block";
-      }
-  }
-  let currentQuestionIndex = 0; // Menyimpan indeks pertanyaan saat ini
-  const questions = [
-      {
-          question: "Apa ibukota Indonesia?",
-          choices: ["A. Jakarta", "B. Bandung", "C. Surabaya", "D. Medan"],
-          correctAnswer: 'A'
-      },
-      {
-          question: "Siapa presiden pertama Indonesia?",
-          choices: ["A. Soekarno", "B. Suharto", "C. Habibie", "D. Megawati"],
-          correctAnswer: 'A'
-      },
-      {
-          question: "Apa nama pulau terbesar di Indonesia?",
-          choices: ["A. Sumatra", "B. Jawa", "C. Kalimantan", "D. Sulawesi"],
-          correctAnswer: 'C'
-      }
-  ];
-  function loadQuestion() {
-    document.getElementById("result").innerHTML = "";
-    document.getElementById("nextQuestionButton").style.display = "none";
-      const question = questions[currentQuestionIndex];
-      document.getElementById("question").innerHTML = question.question;
-     // const pilihanEl = document.getElementById("pilihan");
-      document.getElementById("pilihan").style.display = "block";
-      document.getElementById("pilihA").innerHTML=question.choices[0];
-      document.getElementById("pilihB").innerHTML=question.choices[1];
-      document.getElementById("pilihC").innerHTML=question.choices[2];
-      document.getElementById("pilihD").innerHTML=question.choices[3];
-
-     // pilihanEl.innerHTML = ""; // Kosongkan pilihan sebelumnya
-     // question.choices.forEach((choice, index) => {
-       //   const button = document.createElement("button");
-        //  button.innerHTML = choice;
-        //  button.onclick = () => checkAnswer(String.fromCharCode(65 + index)); // A, B, C, D
-         // pilihanEl.appendChild(button);
-     // });
-  }
-  function showQuiz() {
-        document.getElementById("quizUi").style.display = "block"; // Menampilkan quizUi
-        document.getElementById("pilihan").style.display = "block";
-        document.getElementById("deskripsiUi").style.display = "none"; // Menyembunyikan deskripsiUi
-        document.getElementById("result").innerHTML = "";
-        loadQuestion();
-    }
-    function closeQuiz() {
-        document.getElementById("quizUi").style.display = "none"; // Menampilkan quizUi
-        document.getElementById("deskripsiUi").style.display = "block"; 
-        document.getElementById("result").innerHTML = "";// Menyembunyikan deskripsiUi
-        currentQuestionIndex = 0; 
-        resetSkor();
-   }
-   document.getElementById("showquiz").addEventListener('click',showQuiz);
-   document.getElementById("tutupquiz").addEventListener('click',closeQuiz);
-   document.getElementById("pilihA").addEventListener('click', checkAnswerA);
-   document.getElementById("pilihB").addEventListener('click', checkAnswerB);
-   document.getElementById("pilihC").addEventListener('click', checkAnswerC);
-   document.getElementById("pilihD").addEventListener('click', checkAnswerD);
-   document.getElementById("nextQuestionButton").addEventListener('click', loadQuestion);
 </script>
   </body>
-  
+  <h1>Raja Ratu</h1>
+  <a href="joy.html" class="play-button">Play</a>
 </html>

@@ -1,0 +1,45 @@
+<form id="dataForm">
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required>
+    
+    <label for="gender">Gender:</label>
+    <select id="gender" name="gender" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+    </select>
+    
+    <label for="mood">Mood:</label>
+    <input type="text" id="mood" name="mood" required>
+    
+    <button type="button" onclick="exportCSV()">Export CSV</button>
+</form>
+
+<script>
+    async function exportCSV() {
+        // Ambil nilai dari form
+        const age = document.getElementById('age').value;
+        const gender = document.getElementById('gender').value;
+        const mood = document.getElementById('mood').value;
+        console.log("data="+age+"gender="+gender+"mood"+ mood);
+        
+        // Ambil data dari Data_Pengunjung.csv
+        const response = await fetch('Data_Pengunjung.csv');
+        const data = await response.text();
+        const rows = data.split('\n');
+    
+        // Buat row baru untuk CSV
+        const newRow = `${age},${gender},${mood}`;
+        rows.push(newRow); // Tambahkan row baru
+    
+        // Logika untuk mengekspor row ke CSV
+        const csvContent = rows.join('\n');
+        const encodedUri = encodeURI("data:text/csv;charset=utf-8," + csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "Data_Pengunjung.csv");
+        document.body.appendChild(link); // diperlukan untuk Firefox
+        link.click();
+        document.body.removeChild(link); // hapus link setelah klik
+    }
+    </script>
