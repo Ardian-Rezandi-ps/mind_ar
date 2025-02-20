@@ -1,0 +1,250 @@
+@font-face {
+  font-family: myFirstFont;
+  src: url(Pangolin-Regular.ttf);
+}
+
+body {
+  overflow: hidden;
+  font-family: myfirstFont;
+      background-color: #FFE9D1;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        display: flex;
+             
+        align-items: center-up;
+      
+        max-height: 708px;
+        min-height: 100vh;
+         max-width: 400px;
+         min-width: 400px;
+         margin: 0 auto;
+
+}
+
+#version {
+ float: left;
+ 
+ 
+}
+.bottomright {
+ position: fixed;
+ bottom: 10%;
+ right: 0px;
+}
+
+.demo {
+
+ padding: 20px;
+ margin: 5px;
+}
+.joycenterdiv {
+position: fixed;
+left: 50%;
+bottom: 20px;
+transform: translate(-50%, -50%);
+margin: 0 auto;
+}
+.right_wrap {
+
+width: 100%;
+height: 708px;
+float: left;
+} 
+#joy2Div {
+  width: 200px;
+  height: 200px;
+  margin: 50px
+}
+
+#joystick {
+  border: 1px solid #FF0000;
+}
+
+#joystick2 {
+  border: 1px solid #0000FF;
+}
+#chatboxmenu{
+  background-color: darkred;
+  width: 100%;
+}
+#contain {
+  border: 1px solid #0000FF;
+
+  width: 10%;
+  height: 10%;
+  object-fit: contain;
+  float: left;
+}
+.tombol1 {float: right;border:none; border-radius: 12px; color: black;width: 100%;
+text-align: center; text-decoration: none; padding: 15px 20px;box-shadow: 0 9px #999; cursor: pointer;outline: none; background-color: rgb(132, 159, 238);
+    font-size:2.35vh;
+      
+}
+  .tombol1:hover {background-color: rgb(149, 132, 246)}
+
+.tombol1:active {
+background-color:rgb(63, 137, 249);
+box-shadow: 0 5px #0059AD;
+transform: translateY(4px);
+}
+#contain2 {
+
+  object-fit: contain;
+  float: left;
+}
+
+.grid-container {
+  background-color: darkred;
+  display: grid;
+  gap: 1px;
+
+}
+
+.grid-container2 {
+  background-color: darkred;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 10px;
+
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
+.grid-containertabchat {
+ background-color: darkred;
+ border: solid 4px green;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 10px;
+  justify-content: center;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+.grid-container3 {
+  background-color: darkred;
+  
+  display: none;
+  grid-template-columns: auto auto auto;
+  gap: 10px;
+ justify-content: center;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.grid-containeremo {
+  background-color:rgb(245, 232, 232);
+ 
+  width: 100%;
+  display: none;
+  grid-template-columns: auto auto auto auto auto;
+  gap: 10px;
+ justify-content: center;
+  grid-column-start: 1;
+  grid-column-end: 5;
+  padding:2px;
+  margin:0px;
+  width: 100%;
+  height: 120px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  text-align:justify;
+}
+.grid-containernpc {
+  display: grid;
+ 
+  gap: 10px;
+    background:none;
+
+}
+.imgkotak {
+
+  width: auto;
+  height: auto;
+}
+.containback {
+  position: absolute;
+  object-fit: contain;
+  float:right;
+  right: 0%;
+  margin: 10px;
+  top:0px;
+  height:10%;
+}
+
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+  .item1z {
+grid-row-start: 1;
+grid-row-end: 3;
+}
+
+
+.bubble {
+position: relative;
+font-family:  url(Pangolin-Regular.ttf);
+
+font-size: 38px;
+line-height: 24px;
+width: 300px;
+background: #fff;
+border-radius: 25px;
+padding: 24px;
+text-align: center;
+color: #000;
+border: 4px solid red;
+}
+
+.bubble-bottom-left:before {
+  border: 4px solid red;
+float: bottom;
+content: "";
+width: 0px;
+height: 0px;
+position: fixed;
+border-left: 24px solid #fff;
+border-right: 12px solid transparent;
+border-top: 12px solid #fff;
+border-bottom: 20px solid transparent;
+left: 32px;
+bottom: -24px;
+z-index: 2
+}
+.right_wrap {
+  display: inline;
+width: 100%;
+height: 50%;
+float: left;
+background-color: darkred; 
+border-radius: 25px;
+} 
+.right_wrapnpc {
+  display: none;
+  width: 100%;
+  height: 708px;
+  float: left;
+} 
+.right1 {
+width: 100%;
+float: center;
+
+}
+.gridchange {
+display: grid;
+ justify-content: center;
+float: center;
+
+}

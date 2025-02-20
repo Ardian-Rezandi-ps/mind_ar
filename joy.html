@@ -195,53 +195,19 @@ if(ismove == "false"){
  
 
     function AksiUser(){
-      if(isdbLoading){
+     
         const dbRef = ref(db);
-      get(child(dbRef, "Users/"+localStorage.indekUser+"/npcMessage")).then((snapshot) => {
-  if (snapshot.exists()) {
-    
-   localStorage.npcMessage= snapshot.val();
-  // console.log("snap ttl="+localStorage.npcMessage);
- 
-//  if (localStorage.npcMessage != null) {
-     //       if (localStorage.npcMessage != "") {
-              //  pointTmp.text = "" + (poinArun + 100);
-              var npcstrink= String( localStorage.npcMessage);
-              const strtrunk = npcstrink.split("_");
-                isNPCtalk = strtrunk[0];
-                npcTalkMessage = strtrunk[1];
-                namaPenjualtx=strtrunk[2];
-                area=strtrunk[3];
-                if (isNPCtalk == "true") {
-                //  document.getElementById("buttinteraksi").disabled = false;
-                   activeInteractButt();
-                }
-                else if (isNPCtalk == "false")
-                {
-                 // disableInteractButt();
-                //  document.getElementById("buttinteraksi").disabled = true;
-                }
-          //  }
-      //  }
-       
-   //console.log("snap ttl="+snapshot.val());
-  }else{
-    //console.log("snap ttl dont exists");
-  }})
-
-      var joyfX= joy3X.value *-0.01;
-      var joyfY= joy3Y.value *-0.01; 
-    if(joyfX==0 && joyfY==0){
-    
-     //MoveUser(false);
-    }else{
-    
-     }
-    }
-
+        var joyfX= joy3X.value *0.01;
+      var joyfY= joy3Y.value *0.01; 
+      console.log("joy="+joyfX);
+      set(ref(db, 'count/Demo'), {
+        moveX: joyfX,
+        moveY: joyfY
+    });
+     
     }
   
-
+    setInterval(AksiUser, 100);
 
 
 
