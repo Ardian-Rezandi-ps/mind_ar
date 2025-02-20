@@ -65,7 +65,7 @@
 <div style="float: left;width: 80%; height: 100px;left: 8%;   transform: translate(0%, 120%);
   margin: 0 auto; position: fixed; bottom:22%;" id="tombolbottom">
    
-<center> <button type="text"  class="tombol1" id="buttinteraksi"  src="avatar2/intraksi.png" name="buttinteraksi"><color: white>Interaksi</color></button>
+<center> <button type="text"  class="tombol1" id="buttinteraksi"  src="avatar2/intraksi.png" name="buttinteraksi"><color: white>Male</button>
 </center>
        </div>
 
@@ -199,8 +199,12 @@ if(ismove == "false"){
         const dbRef = ref(db);
         var joyfX= joy3X.value *0.01;
       var joyfY= joy3Y.value *0.01; 
-      console.log("joy="+joyfX);
-      set(ref(db, 'count/Demo'), {
+      console.log("joy="+ localStorage.playerGender);
+      var coundemo= 'count/Demo';
+     if( localStorage.playerGender === "female"){
+      coundemo= 'count/Demo2';
+     }
+      set(ref(db, coundemo), {
         moveX: joyfX,
         moveY: joyfY
     });
