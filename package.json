@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/bobboteck/JoyStick/issues"
   },
-  "homepage": "https://github.com/bobboteck/JoyStick#readme"
+  "homepage": "https://github.com/bobboteck/JoyStick#readme",
+  "dependencies": {
+    "joystick-controller": "^1.1.1"
+  }
 }
